@@ -1,0 +1,234 @@
+#### NOTES ####
+
+1 - Linklerin üzerine gelip <Enter>'a tıklarsan help menüsüne ulaşırsın.
+2 - Bir kelimenin üstüne gelip <Shift> + <k> 'ye basarak help menüsüne ulaşırsın.
+4 - :q! ile değişiklikleri kayıt etmeden çıkarsın.
+5 - :Tutor ile tutorial'a giriş yaparsın.
+6 - <x> ile normal modda karakter silebilirsin.
+7 - <Esc> ile modlardan çıkış yapabilirsin ve istenmeyen veya yarım tamamlanmış komutları iptal edebilirsin.
+8 - <i> ile insertion mod'a geçiş yapabilirsin. (Cursorun solundan yazmaya başlatır.)
+9 - <a> ile appending mod'a geçiş yapabilirsin. (Cursorun sağından yazmaya başlatır.)
+10 - :wq --> write and quit the file.
+11 - To start Neovim from the shell prompt nvim FILENAME
+
+
+	### COUNTS FOR MOTIONS ###
+		[Number] [Motion]
+
+		2w move the cursor two words forward.
+		3e move the cursor to the end of the third word forward.
+		
+		NOTE: Press 0 (zero) to move to the start of the line in normal mode.
+	
+	### COUNTS FOR OPERATORS ###
+		
+		[Operator] [Number] [Motion]
+
+		d2w delete the two UPPER CASE words
+	
+	### MOTIONS ###
+		A short list of motions:
+			[w] - until the start of the next word, EXCLUDING its first character.
+			[e] - to the end of the current word, INCLUDING the last character.
+			[b] - previous word
+			[i] - inside textobject
+			[a] - around textobject
+
+			[$] - to the end of the line, INCLUDING the last character.
+			[0] - to the start of line 
+			[^] - to the start of line (non-blank)
+			[{] - previous empty line
+			[}] - next empty line
+			[gg] - first line
+			[G] - last line
+
+			[f] - next char 
+			[F] - previous char
+			[t] - before the next char
+			[T] - before the previous char
+			
+			[%] - Matching character '()', '{}', '[]' 
+			
+		NOTE: Pressing just the motion while in Normal mode without an operator will move the cursor as specified.
+
+
+	### OPERATORS ###
+		
+		### Move Command ###
+			* Works with MOTIONS.
+				<h> move left.
+				<j> move down.
+				<k> move up.
+				<l> move right.
+
+		### Append Command <a> ###
+			<a> insert text AFTER the cursor.
+			<A> insert text at the end of line.
+
+		### Insert Commnand <i> ###
+			<i> insert text BEFORE the cursor.
+			<I> insert text at the beginning of the line.
+
+		### Delete Command <x> ###
+			<x> delete a character.
+
+		### Indent Operator >> << ###
+			* Works with MOTIONS.
+				>> indent to the right
+				<< indent to the left
+
+		### Replace Command <r> <R> ###
+			<r> replace a character.
+			<R> replace until <Esc>.
+
+		### Yank(copy) Operator ###
+			* Works with MOTIONS.
+				<y> copy text.
+
+		### Paste Operator ###
+			<p> paste text BEFORE.
+			<P> paste text AFTER.
+			
+		### THE OPEN COMMAND <o><O> ###
+			<o> open up a line BELOW the cursor and enter Insert mode.
+			<O> open up a line ABOVE the cursor and enter Insert mode.
+
+		### Delete Operator <d> ###
+			* Works with MOTIONS.
+				<d> delete operator.
+				<dd> delete the line.
+		
+		### Put Operator <p> ###
+			<p> put previously deleted text after the cursor.
+			<P> put previously deleted text before the cursor.
+		
+		### Change Operator <c> ###
+			* Works with MOTIONS.
+				<c><e> change the word until the end of the word. That is delete the word and enter insert mode.
+
+		### Undoers <u> <U> ###
+			<u> undo the last command executed
+			<U> undo the last commands executed on current line.
+			<Cntrl - r> redo the last command executed
+		
+		### FILE OPERATORS ###
+			
+			[Number]<G> goto line specified with [Number].
+			<Cntrl - g> show location in a file and the file status.
+			<gg> move to start of the file.
+			<G> move to end of the file.
+
+		### SEARCH COMMAND ###
+
+			## GENERAL SEARCH </> <?> ##
+				</> "search_str" <Enter> search for the phrase in forward direction.
+				<?> "search_str" <Enter> search for the phrase in reverse direction.
+					<n> search for the same phrase again.
+					<N> search for the same phrase in the opposite direction.
+
+				<Cntrl - o> go back to where you came from.
+				<Cntrl - i> go forward to go forward.
+
+				NOTE: When the search reaches the end of the file it will continue at the start, unless the 'wrapscan' option has been reset.
+			
+			## SEARCH TOKEN <*> <#> ##
+				<*> search token.
+				<#> search token backwards.
+
+			## MATCHING PARANTHESES <%> ##
+				<%> find a matching ), ] or }.
+
+			## SUBSTITUTE COMMAND :s ## 
+				:s/old/new to substitute first occurence of "new" for "old" in the line.
+				:s/old/new/g to substitute all occurences of "new" for "old" in the line.
+				:#,#s/old/new to substitute first occurencs of "new" for "old" between lines #,#.
+				:#,#s/old/new/g to substitute all occurences of "new" for "old" between lines #,#.
+				:%s/old/new/g to change every occurence in the whole file.
+				:%s/old/new/gc to find every occurence in the whole file, with a prompt whether to substitute or not.
+
+				NOTE : You can also select the lines you want to substitute first using Visual mode.
+		
+	### EXECUTE AN EXTERNAL SHELL COMMAND :! ###
+		:![command] execute any external shell command
+	
+	### WRITING FILES ###
+		:w FILENAME save the file with name FILENAME.
+
+		## SAVE PART OF THE FILE ##
+			Press <v> to enter visual mode.
+			Select the text.
+			Prompt :w FILENAME.
+
+	### RETRIEVING AND MERGING FILES ###
+		:r FILENAME retrieve the contents of a file with name FILENAME.
+	
+	### RETRIEVING FROM SHELL ###
+		:r ![command] retrieve the contents from the shell command.
+	
+	### SET COMMAND ###
+		:set xxx sets the option "xxx". Some options are:	
+			'ic' 'ignorecase'   ignore upper/lower case when searching
+			'is' 'incsearch'    show partial matches for a search phrase
+			'hls' 'hlsearch'    highlight all matching phrases
+		
+		You can either use the long or the short option name.
+		
+		Prepend "no" to switch an option off:
+		:set noic
+		
+		Prepend "inv" to invert an option:
+		:set invic
+
+	### GETTING HELP ###
+		<F1> or :help
+
+		You can find help on just about any subject, by giving an argument to the
+		":help" command. Try these (don't forget to press <Enter>):
+			:help w
+			:help c_CTRL-D
+			:help insert-index
+			:help user-manual
+	
+	### NVIM WINDOWS ###
+		<Cntrl - w> see window options.
+		<Cntrl - w> <Cntrl - w> jump to another window.
+		<z><z> center the screen
+	### VISUAL MODE ###
+		<v> see visual mode options.
+		<Shift v> visual line mode, allows to select lines.
+		<Cntrl v> visual block mode, allows to select columnwise.
+
+	### COMMAND LINE COMPLETION ###
+		<Cntrl - d> show a list of commands
+		<Tab> complete the command
+
+	### INDENTATION ###
+		== correct indendation.
+		gg=G correct indentation for entire file.
+	
+	### MARKS ###
+		<m>[key] mark line.
+		'[key] go to marked line.
+	
+	### REPEAT LAST COMMAND ###
+		. repeat last command.
+	
+	### REGISTERS ###
+		!reg --> see register.
+		"+ --> clipboard register (special register that is copy register)
+		<reg> + Command
+			Ex. "7 <p> --> Copy the contents of register "7
+			Ex. "7 <y><y> --> Copy the current line to register "7
+
+		NOTE: Deleting means cutting, so after <d><d> we cut the text and store it in a register. Register for cutting (deleting) is ""
+		NOTE: Register for yanking is  "0
+		NOTE: Yanking sets both registers "" and "0
+	
+	### MACROS ###
+		<q>[key] start recording macro.
+		Macro can be seen in register. Do whatever you want and press q to stop recording macro. To execute macro <@>[key]
+
+	### LABELS ###
+		<Cntrl - ]> goto label. (<Cntrl - Option - Ü>)
+		<Cntrl - o> come back where you came from.
+
