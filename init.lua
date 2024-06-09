@@ -300,7 +300,7 @@ require('lazy').setup({
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>w'] = { name = '[W]indow/[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
         ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
       }
@@ -894,6 +894,13 @@ require('lazy').setup({
         ['<leader>a'] = { name = '[A]utoSession', _ = 'which_key_ignore' },
       }
     end,
+  },
+
+  {
+    'szw/vim-maximizer',
+    keys = {
+      { '<leader>wm', '<cmd>MaximizerToggle<CR>', desc = 'Maximize/Minimize a split' },
+    },
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
