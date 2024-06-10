@@ -12,6 +12,11 @@
 11 - To start Neovim from the shell prompt nvim FILENAME
 
 
+To see tree of treesitter prompt :InspectTree
+<Cntrl - Space> select node incremental.
+<Backspace> deselect node. (decremental.)
+
+
 	### COUNTS FOR MOTIONS ###
 		[Number] [Motion]
 

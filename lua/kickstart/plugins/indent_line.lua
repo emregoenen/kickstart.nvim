@@ -4,6 +4,8 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    opts = {
+      indent = { char = '\u{0250B}' }, -- vertical dotted line unicode for indentation
+    },
   },
 }
